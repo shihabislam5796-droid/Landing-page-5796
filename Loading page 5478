@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>গণ ভোট – চূড়ান্ত ভাইরাল</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+
+<meta property="og:title" content="গণ ভোট – আপনার হ্যাঁ বা না ভোট গুরুত্বপূর্ণ!">
+<meta property="og:description" content="আপনার মতামত জানান, দেখুন আপনার বন্ধু কী ভোট দিয়েছে 🎉">
+<meta property="og:image" content="https://i.ibb.co/album/sample-preview.jpg">
+<meta property="og:url" content="https://shihabislam5796-droid.github.io/BD-Vote-24/">
+<meta property="og:type" content="website">
+
+<style>
+html, body{margin:0;padding:0;width:100%;height:100%;overflow-x:hidden;font-family:'Kanit',sans-serif;background:linear-gradient(135deg,#ffe6f0,#ffe6e6);display:flex;align-items:center;justify-content:center;}
+body{position:relative;}
+.container{position:relative;z-index:10;background:#fff;max-width:600px;width:90%;border-radius:30px;padding:50px 35px;box-shadow:0 30px 80px rgba(0,0,0,0.3);text-align:center;transition:0.3s;}
+h1{font-size:28px;margin-bottom:30px;color:#333;line-height:1.4;}
+.btn{font-size:22px;padding:18px 40px;margin:15px;border:none;border-radius:25px;cursor:pointer;transition:transform 0.2s, box-shadow 0.2s;box-shadow:0 10px 30px rgba(0,0,0,0.2);}
+.btn:hover{transform:scale(1.1);box-shadow:0 12px 35px rgba(0,0,0,0.25);}
+.btn-yes{background:linear-gradient(90deg,#ff416c,#ff4b2b);color:white;}
+.btn-no{background:linear-gradient(90deg,#1e90ff,#00cfff);color:white;}
+.share{display:none;margin-top:30px;font-size:16px;color:#555;}
+.share-buttons img{width:65px;margin:0 15px;cursor:pointer;transition:0.3s;}
+.share-buttons img:hover{transform:scale(1.3) rotate(10deg);}
+.reaction{position:absolute;font-size:28px;animation: floatUp 2s ease-out forwards;pointer-events:none;}
+@keyframes floatUp{0%{opacity:1;transform:translateY(0) scale(1);}50%{transform:translateY(-80px) scale(1.4) rotate(20deg);}100%{opacity:0;transform:translateY(-250px) scale(1.8) rotate(40deg);}}
+.confetti{position:absolute;width:12px;height:12px;border-radius:50%;opacity:0.9;animation: confettiFall 3s linear forwards;}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(700px) rotate(720deg);}}
+.firework{position:absolute;border-radius:50%;pointer-events:none;}
+@keyframes fireworkAnim{0%{opacity:1;transform:scale(0);}50%{transform:scale(1.5);}100%{opacity:0;transform:scale(0);}}
+.comments{margin-top:40px;text-align:left;max-height:250px;overflow-y:auto;}
+.comment{display:flex;align-items:center;margin-bottom:15px;background:#f9f9f9;border-radius:15px;padding:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.comment img{width:45px;height:45px;border-radius:50%;margin-right:10px;}
+.comment-content{flex:1;}
+.comment-content span.user{font-weight:bold;margin-right:5px;}
+.comment-content span.time{font-size:12px;color:#888;margin-left:8px;}
+.comment-content span.vote{font-weight:bold;color:#ff416c;margin-left:5px;}
+@media (max-width:768px){
+    .container{padding:35px 20px;}
+    h1{font-size:24px;}
+    .btn{font-size:20px;padding:15px 30px;}
+}
+.sparkle{position:absolute;width:4px;height:4px;border-radius:50%;background:white;opacity:0.7;animation:sparkleAnim linear infinite;}
+@keyframes sparkleAnim{0%{transform: translateY(0) translateX(0);}100%{transform: translateY(-700px) translateX(100px);}}
+</style>
+</head>
+<body>
+
+<script>
+for(let i=0;i<100;i++){
+    let s=document.createElement('div');
+    s.className='sparkle';
+    s.style.left=Math.random()*window.innerWidth+'px';
+    s.style.top=Math.random()*window.innerHeight+'px';
+    s.style.animationDuration=(3+Math.random()*5)+'s';
+    s.style.width=(2+Math.random()*4)+'px';
+    s.style.height=s.style.width;
+    document.body.appendChild(s);
+}
+</script>
+
+<div class="container">
+<h1>গণ ভোটে আপনার মূল্যবান মতামত দিন "হ্যাঁ" বা "না"</h1>
+<button class="btn btn-yes" onclick="vote('yes')">❤️ হ্যাঁ</button>
+<button class="btn btn-no" onclick="vote('no')">😡 না</button>
+
+<div class="share" id="share-text">
+আপনার মতামত সাবমিট করার জন্য 12 জন ফ্রেন্ডকে শেয়ার করুন:
+<div class="share-buttons">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" onclick="share('whatsapp')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Imo_logo.svg" alt="Imo" onclick="share('imo')">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Messenger" onclick="share('messenger')">
+</div>
+</div>
+
+<div class="comments" id="comment-section"></div>
+</div>
+
+<script>
+const myLink="https://shihabislam5796-droid.github.io/BD-Vote-24/";
+let shareCount=0;
+const requiredShares=12;
+const reactions=['❤️','😡','🔥','👍','💥','💖'];
+
+function vote(option){
+    showViralReactions(option);
+    showConfettiShower();
+    showSparkleExplosion();
+    showFireworks();
+    document.getElementById('share-text').style.display='block';
+    alert("আপনি ভোট দিয়েছেন: "+(option==='yes'?'হ্যাঁ ❤️':'না 😡'));
+}
+
+function showViralReactions(option){
+    for(let i=0;i<10;i++){
+        let r=document.createElement('div');
+        r.className='reaction';
+        r.style.left=Math.random()*(window.innerWidth-50)+'px';
+        r.style.bottom='20px';
+        r.style.fontSize=(24+Math.random()*24)+'px';
+        r.textContent=reactions[Math.floor(Math.random()*reactions.length)];
+        document.body.appendChild(r);
+        setTimeout(()=>{r.remove();},2500);
+    }
+}
+
+function showConfettiShower(){
+    for(let i=0;i<80;i++){
+        let c=document.createElement('div');
+        c.className='confetti';
+        c.style.left=Math.random()*window.innerWidth+'px';
+        c.style.background=['#ff416c','#ffb347','#ffd700','#00c851','#33b5e5'][Math.floor(Math.random()*5)];
+        document.body.appendChild(c);
+        setTimeout(()=>{c.remove();},3500);
+    }
+}
+
+function showSparkleExplosion(){
+    for(let i=0;i<50;i++){
+        let s=document.createElement('div');
+        s.className='sparkle';
+        s.style.left=Math.random()*window.innerWidth+'px';
+        s.style.top=Math.random()*window.innerHeight+'px';
+        s.style.width=(3+Math.random()*5)+'px';
+        s.style.height=s.style.width;
+        s.style.background=['#fff','#fffc','#ffd700'][Math.floor(Math.random()*3)];
+        document.body.appendChild(s);
+        setTimeout(()=>{s.remove();},2500);
+    }
+}
+
+function showFireworks(){
+    for(let i=0;i<10;i++){
+        let f=document.createElement('div');
+        f.className='firework';
+        f.style.left=Math.random()*window.innerWidth+'px';
+        f.style.top=Math.random()*window.innerHeight*0.7+'px';
+        f.style.width='20px'; f.style.height='20px';
+        f.style.background=['#ff416c','#ffb347','#ffd700','#00c851','#33b5e5'][Math.floor(Math.random()*5)];
+        document.body.appendChild(f);
+        f.style.animation='fireworkAnim 1.2s forwards';
+        setTimeout(()=>{f.remove();},1200);
+    }
+}
+
+function share(platform){
+    let shareURL="";
+    const text=encodeURIComponent("আপনার ভোট শেয়ার করুন: "+myLink);
+    if(platform==='whatsapp'){shareURL=`https://wa.me/?text=${text}`;}
+    else if(platform==='imo'){shareURL=`https://imo.im/share?text=${text}`;}
+    else if(platform==='messenger'){shareURL=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(myLink)}`;}
+    window.open(shareURL,"_blank");
+    shareCount++;
+    if(shareCount>=requiredShares){
+        alert("🎉 ধন্যবাদ! আপনার মতামত সাবমিট হয়েছে ✅");
+        window.location.href=myLink;
+    } else{
+        alert(`আপনি শেয়ার করেছেন ${shareCount}/${requiredShares} বার।`);
+    }
+}
+
+window.addEventListener('beforeunload',function(e){
+    if(shareCount<requiredShares){window.location.href=myLink;}
+});
+
+// Fake comments
+const fakeComments=[
+{user:'Rahim',vote:'হ্যাঁ ❤️',time:5,pic:'https://i.pravatar.cc/40?img=5'},
+{user:'Karim',vote:'না 😡',time:12,pic:'https://i.pravatar.cc/40?img=8'},
+{user:'Jahan',vote:'হ্যাঁ ❤️',time:30,pic:'https://i.pravatar.cc/40?img=12'},
+{user:'Salma',vote:'না 😡',time:50,pic:'https://i.pravatar.cc/40?img=15'},
+{user:'Rina',vote:'হ্যাঁ ❤️',time:65,pic:'https://i.pravatar.cc/40?img=20'},
+{user:'Tanvir',vote:'হ্যাঁ ❤️',time:90,pic:'https://i.pravatar.cc/40?img=25'},
+{user:'Mitu',vote:'না 😡',time:120,pic:'https://i.pravatar.cc/40?img=30'},
+{user:'Hasan',vote:'হ্যাঁ ❤️',time:150,pic:'https://i.pravatar.cc/40?img=35'},
+{user:'Nadia',vote:'না 😡',time:180,pic:'https://i.pravatar.cc/40?img=40'},
+{user:'Shuvo',vote:'হ্যাঁ ❤️',time:200,pic:'https://i.pravatar.cc/40?img=45'}
+];
+const commentSection=document.getElementById('comment-section');
+fakeComments.forEach(c=>{
+const div=document.createElement('div');
+div.className='comment';
+div.innerHTML=`<img src="${c.pic}" alt="profile"><div class="comment-content"><span class="user">${c.user}</span><span class="vote">${c.vote}</span><span class="time">${c.time} সেকেন্ড আগে</span></div>`;
+commentSection.appendChild(div);
+});
+</script>
+</body>
+</html>
