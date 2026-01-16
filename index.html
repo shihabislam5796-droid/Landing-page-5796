@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🔥 Hot Exclusive Offer 🔥</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Overlay for readability */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 420px;
+      padding: 45px 30px;
+      background-color: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(18px);
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 15px;
+      color: #ff1744;
+      text-shadow: 0 0 15px #ff1744, 0 0 35px #ff1744;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 35px;
+      text-shadow: 0 0 8px #000;
+    }
+
+    /* Animated button */
+    .cta-button {
+      display: inline-block;
+      padding: 20px 40px;
+      font-size: 24px;
+      color: #fff;
+      background-color: #ff1744;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 0 30px #ff1744, 0 0 60px #ff1744, 0 0 90px #ff1744;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 50px #ff1744, 0 0 100px #ff1744, 0 0 150px #ff1744;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 30px #ff1744, 0 0 60px #ff1744, 0 0 90px #ff1744; }
+      50% { transform: scale(1.05); box-shadow: 0 0 50px #ff1744, 0 0 100px #ff1744, 0 0 150px #ff1744; }
+      100% { transform: scale(1); box-shadow: 0 0 30px #ff1744, 0 0 60px #ff1744, 0 0 90px #ff1744; }
+    }
+
+    /* Flickering flames */
+    .flames {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 160px;
+      background: url('https://i.ibb.co/6HsK9fX/flames.gif') repeat-x bottom;
+      background-size: contain;
+      animation: moveFlames 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes moveFlames {
+      0% { background-position-x: 0; }
+      100% { background-position-x: 1000px; }
+    }
+
+    /* Floating bokeh lights */
+    .bokeh-light {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ff1744;
+      opacity: 0.7;
+      animation: floatBokeh 8s linear infinite;
+    }
+
+    @keyframes floatBokeh {
+      0% { transform: translateY(0) scale(1); opacity: 0.7; }
+      50% { transform: translateY(-250px) scale(1.5); opacity: 0.4; }
+      100% { transform: translateY(-500px) scale(1); opacity: 0; }
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #fff;
+      opacity: 0.9;
+      animation: sparkleAnim 3s linear infinite;
+    }
+
+    @keyframes sparkleAnim {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      50% { transform: translateY(-100px) scale(1.5); opacity: 0.5; }
+      100% { transform: translateY(-200px) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <!-- Flickering flames at bottom -->
+  <div class="flames"></div>
+
+  <div class="container">
+    <h1>🔥 Hot Exclusive Offer 🔥</h1>
+    <p>Feeling adventurous? Don’t wait! Click the button below to unlock your secret pleasure instantly.</p>
+    <a class="cta-button" href="https://shorturl.at/TjGyN" target="_blank">Play XxX ▶️</a>
+  </div>
+
+  <!-- Floating bokeh lights -->
+  <script>
+    // Bokeh lights
+    for(let i=0; i<25; i++){
+      let light = document.createElement('div');
+      light.classList.add('bokeh-light');
+      light.style.left = Math.random()*100 + '%';
+      light.style.animationDelay = (Math.random()*8) + 's';
+      light.style.width = light.style.height = (Math.random()*12+6) + 'px';
+      document.body.appendChild(light);
+    }
+
+    // Sparkles
+    for(let i=0; i<20; i++){
+      let sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random()*100 + '%';
+      sparkle.style.animationDelay = (Math.random()*3) + 's';
+      sparkle.style.width = sparkle.style.height = (Math.random()*6+2) + 'px';
+      document.body.appendChild(sparkle);
+    }
+  </script>
+</body>
+  </html>
